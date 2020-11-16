@@ -1,5 +1,5 @@
 """
-ASGI config for StudFood project.
+ASGI config for StudFood StudFood.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

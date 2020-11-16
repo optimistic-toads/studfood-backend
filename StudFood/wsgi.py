@@ -1,5 +1,5 @@
 """
-WSGI config for StudFood project.
+WSGI config for StudFood StudFood.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
