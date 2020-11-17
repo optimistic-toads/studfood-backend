@@ -13,16 +13,12 @@ class ProductsSerializer(serializers.Serializer):
         decimal_places=2
     )
 
-    created_date = serializers.DateField(
-    )
-
-    updated_date = serializers.DateField(
-    )
-
-    quantity = serializers.IntegerField()
-
     weight = serializers.IntegerField()
 
     ingredients = serializers.CharField(
         max_length=200
+    )
+
+    type_of_product = serializers.CharField(
+        max_length=50,
     )
