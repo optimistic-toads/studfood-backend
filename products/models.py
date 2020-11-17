@@ -37,9 +37,20 @@ class Product(models.Model):
 
     ingredients = models.CharField(
         'Ingredients',
-        max_length=200
+        max_length=200,
+        blank=True,
+        null=True
+    )
+
+    PRODUCT_TYPE_CHOICE = (
+        ('main_dish', 'Main dish'), ('desert', 'Desert'), ('drink', 'Drink'), ('other_products', 'Other products')
+    )
+
+    type_of_product = models.CharField(
+        max_length=50,
+        choices=PRODUCT_TYPE_CHOICE,
+        default='Main dish'
     )
 
     def __str__(self):
         return self.name
-
