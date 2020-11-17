@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class MainDishes(models.Model):
+class MainDish(models.Model):
     name = models.CharField(
         'Name',
         max_length=100
@@ -39,3 +39,6 @@ class MainDishes(models.Model):
         'Ingredients',
         max_length=200
     )
+
+    def __str__(self):
+        return self.name
