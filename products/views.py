@@ -12,5 +12,5 @@ class DishesList(APIView):
 
     def get(self, request, format=None):
         dishes = models.MainDish.objects.all()
-        serializer = MainDishesSerializer(dishes, many=True)
+        serializer = MainDishesSerializer(dishes,context={'request': request}, many=True)
         return Response(serializer.data)
