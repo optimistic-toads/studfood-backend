@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 
-class MainDishesSerializer(serializers.Serializer):
+class ProductsSerializer(serializers.Serializer):
     name = serializers.CharField(
         max_length=100
     )
