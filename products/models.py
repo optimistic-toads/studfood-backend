@@ -14,7 +14,7 @@ class MainDishes(models.Model):
     price = models.DecimalField(
         'Price',
         max_digits=5,
-        decimal_places=5
+        decimal_places=2
     )
 
     created_date = models.DateField(
