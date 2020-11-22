@@ -7,7 +7,7 @@ class Product(models.Model):
         max_length=100
     )
 
-    cover_photo = models.ImageField(
+    photo = models.ImageField(
         'Photo'
     )
 
@@ -35,7 +35,7 @@ class Product(models.Model):
         'Weight',
     )
 
-    ingredients = models.CharField(
+    description = models.CharField(
         'Ingredients',
         max_length=200,
         blank=True,

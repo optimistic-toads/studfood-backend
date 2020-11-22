@@ -10,7 +10,7 @@ class ProductsListSerializer(serializers.Serializer):
         max_length=100
     )
 
-    cover_photo = serializers.ImageField()
+    photo = serializers.ImageField()
 
     price = serializers.DecimalField(
         max_digits=5,
@@ -19,7 +19,7 @@ class ProductsListSerializer(serializers.Serializer):
 
     weight = serializers.IntegerField()
 
-    ingredients = serializers.CharField(
+    description = serializers.CharField(
         max_length=200
     )
 
