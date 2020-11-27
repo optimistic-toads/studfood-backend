@@ -28,6 +28,7 @@ ALLOWED_HOSTS = []
 
 MY_APPS = [
     'products',
+    'order'
 ]
 
 THIRD_PARTY_APPS = [
