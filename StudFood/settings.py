@@ -104,12 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-        ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'authentication.backend.JWTAuthentication',
-        )
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 }
 
 # Internationalization
@@ -124,9 +121,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-AUTH_USER_MODEL = 'authentication.User'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
