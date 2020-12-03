@@ -9,8 +9,6 @@ class ProductSerializer(serializers.Serializer):
 
 
 class OrderSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField()
-
     product = ProductSerializer(many=True)
 
     created_date = serializers.DateTimeField()
