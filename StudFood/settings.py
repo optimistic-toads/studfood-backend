@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+from . import my_local_settings
 # Build paths inside the StudFood like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#f*7_xhwm6v&^w&m#^z7cbf+ka7chsomh+o*#0c9r5)s=u$p2l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = my_local_settings.debug
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = my_local_settings.allowed_host
 
 MY_APPS = [
     'products',
@@ -115,8 +115,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
