@@ -9,7 +9,8 @@ class Order(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='user'
+        related_name='user',
+        default=1
     )
 
     product = models.ManyToManyField(
