@@ -28,7 +28,8 @@ ALLOWED_HOSTS = my_local_settings.allowed_host
 
 MY_APPS = [
     'products',
-    'order'
+    'order',
+    'authentication'
 ]
 
 THIRD_PARTY_APPS = [
@@ -102,6 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'authentication.backend.JWTAuthentication',
+        )
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -115,6 +125,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+AUTH_USER_MODEL = 'authentication.User'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
