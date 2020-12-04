@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Order
 from products.models import Product
+from datetime import datetime
 from .serializer import OrderSerializer
 from rest_framework.permissions import IsAuthenticated
 
@@ -19,5 +20,5 @@ class OrderView(APIView):
         product = request.POST.get('product')
         serializer = OrderSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            order_saved = serializer.save(user=self.request.user)
+            order_saved = serializer.save(user=self.request.user, created_date=datetime.now())
         return Response({"success": "Article '{}' created successfully".format(order_saved)})
