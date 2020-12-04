@@ -11,8 +11,6 @@ class ProductSerializer(serializers.Serializer):
 class OrderSerializer(serializers.Serializer):
     product = ProductSerializer(many=True)
 
-    created_date = serializers.DateTimeField()
-
     def create(self, validated_data):
         product = validated_data.pop('product', [])
         order = Order.objects.create(**validated_data)
