@@ -2,7 +2,8 @@ from rest_framework import generics, permissions, mixins
 from rest_framework.response import Response
 from .serializer import RegisterSerializer, UserSerializer
 from django.contrib.auth.models import User
-from rest_framework.views import APIView
+from rest_framework import viewsets
+
 
 
 class RegisterApi(generics.GenericAPIView):
@@ -18,9 +19,6 @@ class RegisterApi(generics.GenericAPIView):
         })
 
 
-class UserApi(APIView):
-
-    def get(self, request, *args, **kwargs):
-        user = User.objects.all()
-        serializer = UserSerializer(user, many=True)
-        return Response(serializer.data)
+class UserApi(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
