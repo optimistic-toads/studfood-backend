@@ -1,9 +1,8 @@
-from rest_framework import generics, permissions, mixins
+from rest_framework import generics, permissions, mixins, status
 from rest_framework.response import Response
 from .serializer import RegisterSerializer, UserSerializer
 from django.contrib.auth.models import User
-from rest_framework import viewsets
-
+from rest_framework.views import APIView
 
 
 class RegisterApi(generics.GenericAPIView):
@@ -19,6 +18,17 @@ class RegisterApi(generics.GenericAPIView):
         })
 
 
-class UserApi(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UserApi(APIView):
+
+    def get(self, request, *args, **kwargs):
+        snippets = User.objects.filter(pk=request.user.pk).all()
+        serializer = UserSerializer(snippets, many=True)
+        return Response(serializer.data)
+
+    def put(self, request, *args, **kwargs):
+        user = User.objects.filter(pk=request.user.pk).first()
+        serializer = UserSerializer(user.first_name, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
