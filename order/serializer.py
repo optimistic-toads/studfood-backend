@@ -23,7 +23,7 @@ class OrderPostSerializer(serializers.Serializer):
 
 class OrderGetSerializer(serializers.Serializer):
     id = serializers.IntegerField()
-    product = ProductSerializer(many=True)
+    product = ProductsListSerializer(many=True)
     created_date = serializers.DateTimeField()
 
     def create(self, validated_data):
