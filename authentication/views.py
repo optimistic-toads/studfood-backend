@@ -27,7 +27,7 @@ class UserApi(APIView):
 
     def put(self, request, *args, **kwargs):
         user = User.objects.filter(pk=request.user.pk).first()
-        serializer = UserSerializer(user.first_name, data=request.data)
+        serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
