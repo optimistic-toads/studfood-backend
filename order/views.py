@@ -21,4 +21,4 @@ class OrderView(APIView):
         serializer = OrderPostSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             order_saved = serializer.save(user=self.request.user, created_date=datetime.now())
-        return Response({"success": "Article '{}' created successfully".format(order_saved)})
+        return Response({"success": order_saved.pk})
