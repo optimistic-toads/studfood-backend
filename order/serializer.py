@@ -10,6 +10,10 @@ class ProductSerializer(serializers.Serializer):
 
 class OrderPostSerializer(serializers.Serializer):
     product = ProductSerializer(many=True)
+    price = serializers.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
     def create(self, validated_data):
         product = validated_data.pop('product', [])
@@ -25,6 +29,10 @@ class OrderGetSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     product = ProductsListSerializer(many=True)
     created_date = serializers.DateTimeField()
+    price = serializers.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
     def create(self, validated_data):
         product = validated_data.pop('product', [])

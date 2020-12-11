@@ -22,3 +22,10 @@ class Order(models.Model):
         blank=True,
         null=True
     )
+
+    price = models.DecimalField(
+        'Price',
+        max_digits=5,
+        decimal_places=2,
+        default=0
+    )
